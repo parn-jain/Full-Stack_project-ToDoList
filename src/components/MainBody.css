@@ -1,0 +1,76 @@
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+input[type = "text"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: 2px solid black;
+    outline: none;
+    padding: 10px;
+}
+
+.form1{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.submit{
+    margin-left: 20px;
+    background-color: black;
+    color: red;
+    font-weight: bolder;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+}
+
+
+h2{
+    margin-left: 5.2%
+}
+
+.TDLcontainer {
+    display: flex;
+    width: 100vw;
+    /* border: 2px solid red; */
+    justify-content: center;
+}
+
+
+
+.ToDoList li{
+    justify-content: center;
+    background-color: rgb(92, 94, 96);
+    align-items: center;
+    display: flex;
+    width: 80vw;
+    border: 2px solid black;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.btns{
+    display: flex;
+    width: 15vw;
+    /* border: 2px solid red; */
+    justify-content: space-around;
+}
+.Done{
+    background-color: black;
+    color: red;
+    padding: 10px 20px 10px 20px;
+}
+
+.Delete{
+    background-color: black;
+    color: red;
+    padding: 10px 20px 10px 20px;
+}

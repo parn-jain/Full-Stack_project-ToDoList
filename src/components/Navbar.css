@@ -1,0 +1,36 @@
+.logo{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.container1{
+    display:flex;
+    /* border: 2px solid red; */
+    justify-content: space-between;
+    background-color: black;
+}
+
+.container1 ul{
+    display: flex;
+    /* border: 2px solid red; */
+    width: 50vw;
+    margin-top: 27px;
+    justify-content: center;
+    justify-content: space-between;
+    color: red;
+
+}
+.SignUp{
+    margin-right: 10px;
+    display: flex;
+    height: 30px;
+    margin-top: 27px;
+    align-items: center;
+    /* justify-content: center; */
+}
