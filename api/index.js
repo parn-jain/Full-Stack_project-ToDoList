@@ -191,7 +191,7 @@ async function WriteToDo(req,res)
             userId: req.userId,
             desc: req.body.desc
         });
-
+        // const ToDoId = console.log(work._id)
         if(work)
         {
             const user = await userModel.findOneAndUpdate({_id:req.userId},
@@ -211,12 +211,67 @@ userRoute.route('/GetToDo').get(UserLoggedIn, GetToDo)
 async function GetToDo(req,res)
 {
     const list = await userModel.findById(req.userId)
-    .select("-pass")
+    .select("-pass") 
     .populate('todos')
     .exec();
 
     return res.json(list)
 }
+
+userRoute.route('/mToDo').post(UserLoggedIn,MarkToDo)
+
+async function MarkToDo(req ,res)
+{
+    console.log("plz give the solution", req.body)
+    console.log("ewrgfhjytrttdyjkjhyedd",req.userId)
+    const ToDoId = await ToDoModel.findOneAndUpdate(
+        {
+            _id: req.body.todo_id,
+            userId: req.userId,
+        },[
+            {$set:{
+                Done:{
+                    $eq:[false,"$Done"]
+                }
+            }}
+        ]
+    )
+    res.json({
+        message:"welcome"
+    })
+}
+
+
+userRoute.route('/rToDo').post(UserLoggedIn,RemoveToDo)
+
+
+async function RemoveToDo(req,res)
+{
+    console.log("this is the userId dsgfgertbgtrbrthb", req.userId)
+    console.log("this is the userId dsgfgertbgtrbrthb", req.body.todo_id)
+    const todocheck = await ToDoModel.findOneAndDelete({
+        _id:req.body.todo_id,
+        userId:req.userId,
+    })
+    // todocheck.save()
+    if(todocheck)
+    {
+
+        const usertodo = await userModel.findOneAndUpdate({
+            _id : req.userId,
+        }, {$pull: {todos:req.body.todo_id}});
+        // array k remove kerne ke liye hota hay pull
+    //    await usertodo.save()
+    // const newUser = await usertodo.save()
+    }
+    
+    res.json({
+        message:"welcome"
+    })
+}
+
+
+
 
 
 
