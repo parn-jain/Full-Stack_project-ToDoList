@@ -3,10 +3,8 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require('bcrypt')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
-// const JWT_KEY = 'QWERT!@EWDFRW$Q@WED'
 const JWT_KEY = require("./Secrets2");
-const mongoose = require('mongoose')
-// const db_link = "mongodb+srv://parn:parnjain@cluster0.kfqfxrq.mongodb.net/?retryWrites=true&w=majority"
+const mongoose = require('mongoose');
 const db_link = require("./Secrets");
 const app = express()
 const userRoute = express.Router();
