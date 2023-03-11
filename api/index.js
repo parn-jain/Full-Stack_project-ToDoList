@@ -5,6 +5,7 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const JWT_KEY = require("./Secrets2");
 const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const db_link = require("./Secrets");
 const app = express()
 const userRoute = express.Router();
@@ -12,7 +13,11 @@ const adminRoute = express.Router();
 app.use(express.json())
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+}));
 app.use(cookieParser())
 const userModel = require("./userModel")
 const adminModel = require("./adminModel")
@@ -57,9 +62,11 @@ userRoute.post("/login",async(req,res)=>
         {
             let uid = Ndata2['_id'];
             let token = jwt.sign({payload:uid}, JWT_KEY);
-            res.cookie('UloggedIn',token, {httpOnly:true});
+            res.cookie('UloggedIn',token, {maxAge: 900000,httpOnly:true});
+            // res.redirect("http://localhost:3000/ToDo")
             return res.json(
                 {
+                    message2:console.log("you are logged in"),
                     message:`you are logged in `,
                     userDetails:obj2
                 }
@@ -68,6 +75,7 @@ userRoute.post("/login",async(req,res)=>
     }
     else{
         return res.json({
+            message2:console.log("wrong credentials"),
             message:"wrong credential"
         })
     }
@@ -146,9 +154,6 @@ adminRoute.route('/LogOut').get(Alogout)
 
 
 
-
-
-
 userRoute.route('/ToDo').post(UserLoggedIn, WriteToDo)
 
 function UserLoggedIn(req,res,next)
@@ -175,6 +180,8 @@ function UserLoggedIn(req,res,next)
     else
     {
         return res.json({
+
+            message2:'operation not allowed',
             message:'operation not allowed'
         })
     }
