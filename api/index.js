@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const JWT_KEY = require("./Secrets2");
-const mongoose = require('mongoose');
 const mongoose = require('mongoose')
 const db_link = require("./Secrets");
 const app = express()
