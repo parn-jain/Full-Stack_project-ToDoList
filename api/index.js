@@ -162,7 +162,8 @@ function UserLoggedIn(req,res,next)
         let isVerified = jwt.verify(req.cookies.UloggedIn , JWT_KEY)
         // let decoder = jwt.verify(token , JWT_KEY)
         req.userId = isVerified.payload
-    console.log(req.userId)
+    // console.log(req.userId)
+    console.log("qwertyuioplkjhgfdsazxcvbnm",isVerified)
 
         // console.log("userId", decoder.userId)
         if(isVerified)
