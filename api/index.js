@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require('bcrypt')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
+// const popup = require("popups")
 const JWT_KEY = require("./Secrets2");
 const mongoose = require('mongoose')
 const db_link = require("./Secrets");
@@ -77,6 +78,7 @@ userRoute.post("/login",async(req,res)=>
             message2:console.log("wrong credentials"),
             message:"wrong credential"
         })
+        // return document.alert({content:"1st you have to login"});
     }
 })
 

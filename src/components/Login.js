@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {Link,useNavigate} from "react-router-dom"
 // import Cookies from 'js-cookie';
-// import http from "http"
+import http from "http"
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 export default function Login() {
@@ -24,12 +24,14 @@ export default function Login() {
       //     email:email,
       //     pass:pass
       // },{withCredentials:true})
-        console.log(document.cookie)
+        // console.log(document.cookie)
         if(res.status==200)
         {
+          localStorage.setItem('user',JSON.stringify(res.data),{withCredentials: true})
+          console.log(res)
           // const x= Cookies.get('UloggedIn')
           
-            // navigate("/ToDo")
+            navigate("/ToDo")
             // console.log(x)
         }
     }
