@@ -159,9 +159,13 @@ userRoute.route('/ToDo').post(UserLoggedIn, WriteToDo)
 
 function UserLoggedIn(req,res,next)
 {
+    // check_login()
+
+
     if(req.cookies.UloggedIn)
     {
         let isVerified = jwt.verify(req.cookies.UloggedIn , JWT_KEY)
+        console.log("this i the value of isVerified",isVerified)
         // let decoder = jwt.verify(token , JWT_KEY)
         req.userId = isVerified.payload
     // console.log(req.userId)
@@ -174,18 +178,22 @@ function UserLoggedIn(req,res,next)
         }
         else
         {
-            return res.json({
-                message:"user not verified"
-            })
+            // return res.json({
+            //     message:"user not verified",
+            //     message2:console.log("you are not logged in")
+            // })
+            console.log("you are not logged in")
         }
     }
     else
     {
-        return res.json({
+        // return res.json({
 
-            message2:'operation not allowed',
-            message:'operation not allowed'
-        })
+        //     message2:'operation not allowed',
+        //     message:'operation not allowed'
+        // })
+        // document.alert("you are not logged in ")
+        console.log("you are not logged in hfnfsfdsgghghgfhsjdhgfdsgf")
     }
 }
 
@@ -277,9 +285,76 @@ async function RemoveToDo(req,res)
     })
 }
 
+userRoute.route('/is_logged_in').get(
+    async(req,res)=>{
+        // return res.json(false)
+    if(req.cookies.UloggedIn)
+    {
+        let isVerified = jwt.verify(req.cookies.UloggedIn , JWT_KEY)
+        // console.log(is)
+        if(isVerified)
+        {
+            return res.json(true)
+        }
+        else
+        {
+            return res.status(401).json(false)
+        }
+    }
+    else
+        {
+            return res.status(402).json(false)
+        }
+
+}
+) 
+// function check_login(req,res)
+// {
+    
+//         if(req.cookies.UloggedIn)
+//         {
+//             let isVerified = jwt.verify(req.cookies.UloggedIn , JWT_KEY)
+//             // console.log(is)
+//             if(isVerified)
+//             {
+//                 return res.json(true)
+//             }
+//             else
+//             {
+//                 return res.json(false)
+//             }
+//         }
+//         else
+//             {
+//                 return res.json(false)
+//             }
+    
+    
+// }
+
 
 
 
 
 
 app.listen(5000);
+// async(req,res)=>{
+//     if(req.cookies.UloggedIn)
+//     {
+//         let isVerified = jwt.verify(req.cookies.UloggedIn , JWT_KEY)
+//         // console.log(is)
+//         if(isVerified)
+//         {
+//             return res.json(true)
+//         }
+//         else
+//         {
+//             return res.json(false)
+//         }
+//     }
+//     else
+//         {
+//             return res.json(false)
+//         }
+
+// }

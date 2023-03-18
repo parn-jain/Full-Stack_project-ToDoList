@@ -2,10 +2,11 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {Link,useNavigate} from "react-router-dom"
 // import Cookies from 'js-cookie';
-import http from "http"
-import jwt from 'jsonwebtoken'
-import Cookies from 'js-cookie'
+// import http from "http"
+// import jwt from 'jsonwebtoken'
+// import Cookies from 'js-cookie'
 export default function Login() {
+  
     const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
@@ -20,19 +21,17 @@ export default function Login() {
         // const value = Cookies.get('UloggedIn');
         // console.log(value)
 
-      //   const check = await axios.get("http://localhost:3000/UloggedIn",{
+      //   const check = await axios.get("http://localhost:3000",{
       //     email:email,
       //     pass:pass
       // },{withCredentials:true})
+      // console.log("this is check",check)
         // console.log(document.cookie)
         if(res.status==200)
         {
-          localStorage.setItem('user',JSON.stringify(res.data),{withCredentials: true})
+          // localStorage.setItem('user',JSON.stringify(res.data),{withCredentials: true})
           console.log(res)
-          // const x= Cookies.get('UloggedIn')
-          
             navigate("/ToDo")
-            // console.log(x)
         }
     }
   return (

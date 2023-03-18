@@ -3,7 +3,7 @@ import axios from "axios"
 export default function ToDo() {
     const [todo, setToDo] = useState("")
     const clicked = async(e)=>{
-        // e.preventDefault()
+        e.preventDefault()
         try{
             const res = await axios.post("http://localhost:5000/ToDo/", {
                 desc:todo
@@ -11,7 +11,6 @@ export default function ToDo() {
         catch(error){
                 console.log(error)
               }
-        
 
     }
   return (

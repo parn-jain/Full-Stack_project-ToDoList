@@ -9,7 +9,7 @@ const ToDoSchema = mongoose.Schema(
         },
         desc:{
             type: String,
-            required: true
+            // required: true
         },
         Done:{
             type:Boolean,

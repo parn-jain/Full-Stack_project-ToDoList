@@ -10,7 +10,10 @@ import {
 } from "react-router-dom";
 import Login from './components/Login';
 import ToDo from './components/ToDo';
-// import Register from './components/Register';
+import HomePage from './components/HomePage';
+import PrivateRoutes from './components/PrivateRoute';
+
+
 
 function App() {
   return (
@@ -19,10 +22,13 @@ function App() {
     <div className="bgIMG">
       <Navbar/>
       <Routes>
-        <Route exact path="/" element = {<MainBody/>}/>
+
+        <Route exact path="/" element = {<HomePage/>}/>
+        <Route element = {<PrivateRoutes/>}>
+        <Route exact path = "/ToDo" element = {<MainBody/>}/>
+        </Route>
         <Route exact path = "/Register" element = {<Register/>}/>
         <Route exact path = "/Login" element = {<Login/>}/>
-        <Route exact path = "/ToDo" element = {<ToDo/>}/>
         </Routes>
       </div>
     </Router>
